@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Yorex -f html",
+            "type": "shell",
+            "command": "cargo run --bin yorex_technical_analysis --features html"
+        },
+        {
+            "label": "Integration Tests",
+            "type": "shell",
+            "command": "cargo test --package yorex_technical_analysis --features test-prod --test integration_test main -- --exact"
+        },
+        {
+            "label": "Docker Build",
+            "type": "shell",
+            "command":"docker build -f .docker/Dockerfile -t femiruby/greengoat ."
+        }
+    ]
+}

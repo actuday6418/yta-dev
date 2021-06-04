@@ -1,0 +1,17 @@
+[package]
+name = "yorex_technical_analysis"
+version = "0.1.0"
+authors = ["Yorex AI"]
+edition = "2018"
+
+
+[features]
+html = []
+trade = []
+test-prod = []
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yorex_technical_analysis_macros = { path = "../macros" }
+deps = { path = "../deps" }
