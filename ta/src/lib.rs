@@ -51,14 +51,6 @@ pub fn ta() {
                             let mut t =
                                 NaiveDateTime::parse_from_str(env!("TIME_FROM"), "%Y-%m-%dT%H:%M")
                                     .unwrap();
-                            let mut cad = b
-                                .iter()
-                                .flat_map(|cg| cg.combos.iter().map(|co| co).collect::<Vec<_>>())
-                                .collect::<Vec<_>>();
-                            let bb: f64 = cad
-                                .iter()
-                                .map(|&&cc| Instrument::combo_all_points(cc))
-                                .sum();
                             let mut c = b
                                 .iter()
                                 .flat_map(|cg| {
