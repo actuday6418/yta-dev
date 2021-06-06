@@ -149,3 +149,23 @@ pub fn ta() {
             .collect::<Vec<_>>()
     };
 }
+
+///# find_combo
+///Takes a vector of instrument and returns an ```Option<Combo>``` with the highest points. Returns None if there are no Combinations found.
+pub fn find_combo(int: Vec<Instrument>) -> Option<Combo> {
+    let file = std::fs::read("y2.bin").unwrap();
+    let y_instrument = bincode::deserialize::<YorexInstrument2>(&file).unwrap();
+    let mut max_combo: Option<Combo> = None;
+    let mut max_points = f64::MIN;
+
+    y_instrument.combos.iter().for_each(|x| {
+        x.combos.iter().for_each(|y| {
+            if y.top_ci(&int).points > max_points {
+                max_points = y.top_ci(&int).points;
+                max_combo = Some(y.clone());
+            }
+        });
+    });
+
+    max_combo
+}
